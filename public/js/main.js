@@ -21,23 +21,28 @@ var myStudents = [
 , "Jessica"
 ];
 
+var studentsToPick = myStudents.slice(); //copy so we can remove
+
 var pickStudent = function(students){
     //var randomIndex = Math.floor(Math.random() * students.length)
     //var theChosenOne = students[randomIndex]
-    var theChosenOne = _.sample(students);
+    var theChosenOne = students.splice(0,1); //remove the first?
     var htmlString = theChosenOne + "!"
     $("#chosen-student-container").html(htmlString)
 }
 
 var pickFromMyStudents = function(){
-    pickStudent(myStudents);
+
+    pickStudent(studentsToPick);
 };
 
 var reset = function(){
-	myStudents = _.shuffle(myStudents);
+	studentsToPick = myStudents.slice();
+	studentsToPick = _.shuffle(studentsToPick);
      $("#chosen-student-container").html("?");
 };
 
+reset();
 
                                          
 $("#pick-student-button").click(pickFromMyStudents)
