@@ -32,7 +32,7 @@ var pickStudent = function(students){
 }
 
 var pickFromMyStudents = function(){
-
+	studentsToPick = _.shuffle(studentsToPick); //shuffle each time
     pickStudent(studentsToPick);
 };
 
